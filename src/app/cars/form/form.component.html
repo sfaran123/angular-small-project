@@ -1,0 +1,44 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div class="d-flex justify-content-between mb-3">
+    <p class="f-18 title"> {{ car ? car.brand + ' ' + car.type : ('New Car')}}</p>
+    <div>
+      <button mat-button class="main-btn" type="submit">{{ car ? ('Update') : ('Save') }}</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 mt-5">
+      <mat-select class="w-75" placeholder="Choose branch" formControlName="branchId" required>
+        <mat-option *ngFor="let branch of selectBranches" [value]="branch.id">{{ branch.name }}</mat-option>
+        <mat-error>{{ errorMessages.required }}</mat-error>
+      </mat-select>
+    </div>
+
+  </div>
+  <div class="row mt-5">
+    <div class="col-md-6">
+      <mat-form-field class="w-75">
+        <input matInput type="text" placeholder="type" formControlName="type">
+        <mat-error>{{ errorMessages.required }}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <mat-form-field class="w-75">
+        <input matInput type="text" placeholder="brand" formControlName="brand">
+        <mat-error>{{ errorMessages.required }}</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-md-6">
+      <mat-form-field class="w-75">
+        <input matInput type="date" placeholder="model" formControlName="model">
+        <mat-error>{{ errorMessages.required }}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <mat-form-field class="w-75">
+        <input matInput type="number" placeholder="price" formControlName="price">
+      </mat-form-field>
+    </div>
+  </div>
+</form>

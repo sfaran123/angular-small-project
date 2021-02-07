@@ -1,0 +1,99 @@
+<form [formGroup]="employeeForm" (ngSubmit)="submit()">
+  <div class="d-flex justify-content-between mb-3">
+    <p class="f-18 title"> {{ employee ? employee.name : ('NEW_EMPLOYEE')}}</p>
+    <div>
+      <button mat-button class="main-btn" type="submit" (click)="submit()">{{ employee ? ('UPDATE') : ('SAVE') }}</button>
+    </div>
+  </div>
+  <div class="d-flex">
+    <div class="card bg-light py-3 px-5 w-50 mr-4">
+      <mat-form-field class="mb-2">
+        <input matInput type="text" placeholder="{{ 'ID_NUMBER' }}" formControlName="IdNumber">
+        <mat-error *ngIf="employeeForm.get('IdNumber').errors && employeeForm.get('IdNumber').errors.idValidator">{{ errorMessages.idValidator }}</mat-error>
+        <mat-error *ngIf="employeeForm.get('IdNumber').errors && employeeForm.get('IdNumber').errors.required">{{ errorMessages.required }}</mat-error>
+      </mat-form-field>
+      <mat-form-field class="mb-2">
+        <input matInput type="text" placeholder="{{ 'EMPLOYEE_NAME' }}" formControlName="name">
+        <mat-error>{{ errorMessages.required }}</mat-error>
+      </mat-form-field>
+      <mat-form-field class="mb-2">
+        <input matInput type="text" placeholder="{{ 'MAGNETIC_CARD' }}" formControlName="magnetCard">
+      </mat-form-field>
+      <mat-form-field class="mb-2">
+        <input matInput type="text" placeholder="{{ 'EXTERNAL_IDENTIFICATION' }}" formControlName="externalId" required>
+        <mat-error>{{ errorMessages.required }}</mat-error>
+      </mat-form-field>
+      <mat-radio-group class="mb-2" formControlName="gender">
+        <mat-radio-button value="male">{{ 'MALE' }}</mat-radio-button>
+        <mat-radio-button value="female">{{ 'FEMALE' }}</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="card bg-light py-3 px-5 w-50 mr-4">
+      <mat-form-field class="mb-2">
+        <input matInput placeholder="{{ 'PHONE' }}" formControlName="phone">
+      </mat-form-field>
+      <mat-form-field class="mb-2">
+        <input matInput type="text" placeholder="{{ 'ADDRESS' }}" formControlName="address">
+      </mat-form-field>
+      <mat-form-field class="mb-2">
+        <input matInput type="date" placeholder="{{ 'BIRTH_DATE' }}" formControlName="birthDate">
+      </mat-form-field>
+      <mat-form-field class="mb-2">
+        <input matInput type="date" placeholder="{{ 'WORK_START_DATE' }}" formControlName="workStartDate">
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="d-flex mt-4">
+    <div class="card bg-light py-3 px-5 w-50 mr-4">
+      <mat-checkbox class=" ml-lg-4" formControlName="isCashier">{{ 'CASHIER' }}</mat-checkbox>
+      <mat-checkbox class=" ml-lg-4" formControlName="isManager">{{ 'MANAGER' }}</mat-checkbox>
+      <mat-checkbox class=" ml-lg-4" formControlName="isMinusApprove">{{ 'APPROVES_ITEM_PRICE_IN_MINUS' }}</mat-checkbox>
+      <mat-checkbox class=" ml-lg-4" formControlName="isDeliveryPerson">{{ 'DELIVERY_PERSON'}}</mat-checkbox>
+      <mat-checkbox class=" ml-lg-4" formControlName="isDiscountApprove">{{ 'APPROVES_MANAGER_DISCOUNT' }}</mat-checkbox>
+      <mat-checkbox class=" ml-lg-4" formControlName="canViewReport">{{ 'CAN_VIEW_REPORT'}}</mat-checkbox>
+      <mat-checkbox class=" ml-lg-4" formControlName="canRunZ">{{ 'CAN_RUN_Z_REPORT' }}</mat-checkbox>
+    </div>
+    <div class="card bg-light py-3 px-5 w-50 mr-4">
+      <mat-checkbox class=" ml-lg-4" formControlName="canViewX">{{ 'CAN_VIEW_X_REPORT'  }}</mat-checkbox>
+      <mat-checkbox class=" ml-lg-4" formControlName="canMakeRefund">{{ 'CAN_MAKE_REFUND' }}</mat-checkbox>
+      <mat-checkbox class=" ml-lg-4" formControlName="canDeleteSales">{{ 'CAN_DELETE_CURRENT_SALE' }}</mat-checkbox>
+      <mat-checkbox class=" ml-lg-4" formControlName="canChangePrice">{{ 'CAN_CHANGE_ITEM_PRICE' }}</mat-checkbox>
+      <mat-checkbox class=" ml-lg-4" formControlName="isActive">{{ 'ACTIVE_EMPLOYEE' }}</mat-checkbox>
+      <mat-checkbox class=" ml-lg-4" formControlName="byShiftCalculation">{{ 'CALCULATION_PF_HOURS_BY_SHIFTS' }}</mat-checkbox>
+    </div>
+  </div>
+  <div class="d-flex mt-4">
+    <div class="card bg-light w-50 mr-4">
+      <div class="card-header bold">
+        {{ 'BANK_DETAILS' }}
+      </div>
+      <div class="py-3 px-5">
+        <mat-form-field class="mb-2">
+          <input matInput type="text" placeholder="{{ 'BANK' }}" formControlName="bank">
+        </mat-form-field>
+        <mat-form-field class="mb-2">
+          <input matInput type="text" placeholder="{{ 'BRANCH' }}" formControlName="branch">
+        </mat-form-field>
+        <mat-form-field class="mb-2">
+          <input matInput type="text" placeholder="{{ 'BANK_ACCOUNT_NUMBER' }}" formControlName="bankAccountNumber">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="card bg-light w-50 mr-4">
+      <div class="card-header bold">
+        {{ 'CONTACT_DETAILS' }}
+      </div>
+      <div class="py-3 px-5">
+        <mat-form-field class="mb-2">
+          <input matInput type="text" placeholder="{{ 'CONTACT_NAME' }}" formControlName="contactName">
+        </mat-form-field>
+        <mat-form-field class="mb-2">
+          <input matInput type="te" placeholder="{{ 'CONTACT_PHONE' }}" formControlName="contactPhone">
+        </mat-form-field>
+        <mat-form-field class="mb-2">
+          <input matInput type="text" placeholder="{{ 'TYPE_OF_CLOSENESS' }}" formControlName="contactCloseness">
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+</form>

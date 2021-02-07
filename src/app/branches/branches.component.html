@@ -1,0 +1,14 @@
+<app-data-table (fetchItems)="fetchItems()" [columns]="columns">
+  <div class="text-left new-item-btn">
+    <button mat-button class="main-btn" (click)="newBranch()">New Branch</button>
+  </div>
+
+  <tr *ngFor="let item of dataTable.items">
+    <td>{{ item.name }}</td>
+    <td>{{ item.manager }}</td>
+    <td>
+      <img [src]="pencil" class="icon m-2" (click)="edit(item.id)">
+      <img [src]="trash" class="icon m-2" (click)="delete(item.id)">
+    </td>
+  </tr>
+</app-data-table>

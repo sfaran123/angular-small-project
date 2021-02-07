@@ -1,0 +1,23 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div class="d-flex justify-content-between mb-3">
+    <p class="f-18 title"> {{ branch ? branch : ('New Branch')}}</p>
+    <div>
+      <button mat-button class="main-btn" type="submit">{{ branch ? ('Update') : ('Save') }}</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <mat-form-field class="w-75">
+        <input matInput type="text" placeholder="name" formControlName="name">
+        <mat-error>{{ errorMessages.required }}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <mat-form-field class="w-75">
+        <input matInput type="text" placeholder="manager Name" formControlName="manager">
+        <mat-error>{{ errorMessages.required }}</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+</form>

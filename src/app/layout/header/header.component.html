@@ -1,0 +1,14 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark white-text">
+  <div *ngFor="let link of links">
+    <button mat-button [matMenuTriggerFor]="menu">{{ link.label }}</button>
+    <mat-menu #menu="matMenu">
+      <button *ngFor="let subLink of link.links" mat-menu-item [routerLink]="subLink.url ? [link.url, subLink.url] : link.url">{{ subLink.label }}</button>
+    </mat-menu>
+  </div>
+<!--  <div class="d-flex justify-content-end w-100">-->
+<!--    <button class="btn btn-outline-success fs-20 bold" mat-button [matMenuTriggerFor]="menu">{{ langCods[lang] }}</button>-->
+<!--    <mat-menu #menu="matMenu">-->
+<!--      <button *ngFor="let lang of languages" (click)="changeLang(lang.name)" mat-menu-item>{{ lang.label }}</button>-->
+<!--    </mat-menu>-->
+<!--  </div>-->
+</nav>

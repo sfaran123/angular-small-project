@@ -1,0 +1,17 @@
+<h2 class="mb-3">{{ tableName }}</h2>
+<ng-content select=".new-item-btn" ></ng-content>
+
+<app-side-filters [columns]="columns" (searchSubmitted)="extendedSearch($event)" [showFilters]="showFilters"></app-side-filters>
+<table class="table table-bordered" >
+	<thead>
+	<tr>
+		<th *ngFor="let column of columns" (click)="sort(column)" class="pointer table-header">
+			<span [matTooltip]="'Sort by ' + column.label">{{ column.label }}</span>
+			<i class="fa fa-chevron-down mr-1"></i>
+		</th>
+		<th class="table-header" *ngIf="hasActionsHeader">actions</th>
+	</tr>
+	</thead>
+	<ng-content></ng-content>
+</table>
+
